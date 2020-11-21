@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295_Term\\CS295_Term\\CS295_Term.csproj": {}
+    "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295Term\\CS295_Term\\CS295_Term\\CS295_Term.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295_Term\\CS295_Term\\CS295_Term.csproj": {
+    "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295Term\\CS295_Term\\CS295_Term\\CS295_Term.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295_Term\\CS295_Term\\CS295_Term.csproj",
+        "projectUniqueName": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295Term\\CS295_Term\\CS295_Term\\CS295_Term.csproj",
         "projectName": "CS295_Term",
-        "projectPath": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295_Term\\CS295_Term\\CS295_Term.csproj",
+        "projectPath": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295Term\\CS295_Term\\CS295_Term\\CS295_Term.csproj",
         "packagesPath": "C:\\Users\\Tiffy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295_Term\\CS295_Term\\obj\\",
+        "outputPath": "C:\\Users\\Tiffy\\Desktop\\Homework\\CS295N\\Term Project\\CS295Term\\CS295_Term\\CS295_Term\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tiffy\\AppData\\Roaming\\NuGet\\NuGet.Config",
