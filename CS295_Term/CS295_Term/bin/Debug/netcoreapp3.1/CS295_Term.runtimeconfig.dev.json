@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Tiffy\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Tiffy\\.nuget\\packages"
+    ]
+  }
+}
