@@ -10,6 +10,7 @@ namespace CS295_Term.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
     }
