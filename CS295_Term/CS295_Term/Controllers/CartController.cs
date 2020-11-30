@@ -10,12 +10,10 @@ namespace CS295_Term.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Current = "List";
             return View();
         }
         public IActionResult CompletedList()
         {
-            ViewBag.Current = "List";
             return View();
         }
     }

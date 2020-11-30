@@ -19,6 +19,18 @@
     margin: 47px;
     background-color: lightgray;
 }
+.top {
+    background-color: lightgray;
+    border: 1px solid black;
+    margin: 5px;
+
+}
+.top:hover{
+    background-color: lightblue;
+}
+.bottom {
+    background-color: lightgray;
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -55,13 +67,6 @@ html {
   }
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
@@ -81,7 +86,8 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-image: url("images/woodenBackground.jpeg")
+    background-image: url("images/cuttingboard.jpeg");
+    background-size:cover;
 }
 .footer {
     position: absolute;

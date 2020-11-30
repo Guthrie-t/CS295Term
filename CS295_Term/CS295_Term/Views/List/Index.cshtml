@@ -2,7 +2,24 @@
     ViewData["Title"] = "New Recipe List";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Recipe List</h1>
-    <p>This is where you'll be able to create a new shopping list.</p>
+<div class="row">
+    <div class="page-content col-sm-8">
+        This is content.
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="page-content col-sm-3">
+        This is secondary content.
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-11 page-bottom-content">
+        <div class="row">
+            <div class="col-sm-9">
+            </div>
+            <div class="col-sm-3">
+                <a class="float-right btn btn-secondary ml-1" role="button" asp-controller="Editor" asp-action="Index">Edit</a>
+                <a class="mr-1 float-right btn btn-secondary" role="button">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>

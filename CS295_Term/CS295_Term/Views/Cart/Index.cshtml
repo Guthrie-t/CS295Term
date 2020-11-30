@@ -2,8 +2,31 @@
     ViewData["Title"] = "Recipe Cart";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Your Recipe Cart</h1>
-    <p>This is where you'll be able to view the recipes you've added to your Recipe Cart via the New List view.</p>
-    <p>Go to the <a asp-contorller="Cart" asp-action="CompletedList">Completed List</a>.</p>
+<div class="row">
+    <div class="page-content col-sm-8">
+        This is content.
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="page-content col-sm-3">
+        This is secondary content.
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-11 page-bottom-content">
+        <div class="row">
+            <div class="col-sm-9">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Recipe 1</li>
+                    <li class="list-group-item">Recipe 2</li>
+                    <li class="list-group-item">Recipe 3</li>
+                    <li class="list-group-item">Recipe 4</li>
+                    <li class="list-group-item">Recipe 5</li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <a class="float-right btn btn-secondary ml-1" role="button" asp-controller="List" asp-action="Index">Start Over</a>
+                <a class="mr-1 float-right btn btn-secondary" role="button" asp-controller="Cart" asp-action="CompletedList">Generate List</a>
+            </div>
+        </div>
+    </div>
 </div>
