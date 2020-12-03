@@ -13,6 +13,29 @@
     background-color: lightgray;
     min-height: 20vh;
 }
+
+.box-one {
+    background-image: url(/css/images/seasonalTreats.jpeg);
+    background-size: cover;
+    
+}
+
+.box-two {
+    background-image: url(/css/images/thanksgivingDinner.jpeg);
+    background-size: cover;
+}
+.box-three {
+    background-image: url(/css/images/foodAsGifts.jpeg);
+    background-size: cover;
+}
+h4 {
+    border: 1px black solid;
+    background-color: lightgray;
+    text-align: center;
+    color: dimgray;
+    font-weight: 400;
+}
+
 .page-bottom-content-skinny {
     border: 2px solid black;
     padding: 15px;

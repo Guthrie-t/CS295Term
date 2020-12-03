@@ -9,9 +9,8 @@ namespace CS295_Term.Models
     {
         public int IngredientId { get; set; }
         public string IngredientName { get; set; }
-        public int Quantity { get; set; }
-        public string UnitOfMeasure { get; set; }
-        public string FoodGroup { get; set; }
+        public string Amount { get; set; }
+        public int RecipeID { get; set; }
 
     }
 }
