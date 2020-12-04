@@ -16,8 +16,7 @@
 
 .box-one {
     background-image: url(/css/images/seasonalTreats.jpeg);
-    background-size: cover;
-    
+    background-size: cover;  
 }
 
 .box-two {
@@ -28,12 +27,21 @@
     background-image: url(/css/images/foodAsGifts.jpeg);
     background-size: cover;
 }
+
+.recipe{
+    display:block;
+    max-height: 275px;
+    max-width: 300px;
+}
 h4 {
     border: 1px black solid;
     background-color: lightgray;
     text-align: center;
     color: dimgray;
     font-weight: 400;
+}
+h5{
+    padding-top: 120px;
 }
 
 .page-bottom-content-skinny {

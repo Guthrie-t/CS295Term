@@ -45,7 +45,6 @@ C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_T
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.TagHelpers.input.cache
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.TagHelpers.output.cache
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.RazorCoreGenerate.cache
-C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Editor\Index.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -70,9 +69,6 @@ C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_T
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\staticwebassets\CS295_Term.StaticWebAssets.xml
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.genruntimeconfig.cache
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.csproj.CopyComplete
-C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Cart\CompletedList.cshtml.g.cs
-C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
-C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\List\Index.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
@@ -187,3 +183,6 @@ C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_T
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.csproj.CoreCompileInputs.cache
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\CS295_Term.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\Index.cshtml.g.cs
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\SingleRecipe.cshtml.g.cs
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\EditRecipe.cshtml.g.cs

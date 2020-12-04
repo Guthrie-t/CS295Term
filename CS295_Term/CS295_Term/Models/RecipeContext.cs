@@ -10,9 +10,8 @@ namespace CS295_Term.Models
     {
         public RecipeContext(DbContextOptions<RecipeContext> options) : base (options) { }
 
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Recipe> Recipe { get; set; }
 
-     
+        
     }
 }

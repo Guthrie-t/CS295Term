@@ -10,25 +10,17 @@ namespace CS295_Term.Models
     {
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        public string Ingredients { get; set; }
         public string Instructions { get; set; }
 
+        public int Rating { get; set; }
 
-        //use this when an ingredient exists
-        public void AddIngredient(Ingredient ingredient)
-        {
-            Ingredients.Add(ingredient);
-        }
+        public string Category { get; set; }
 
-        //use this when an ingredient doesn't yet exist
-        public void AddIngredient(string name, string amount)
-        {
-            Ingredient ingredient = new Ingredient
-            {
-                IngredientName = name,
-                Amount = amount,
-            };
-            Ingredients.Add(ingredient);
-        }
+        public DateTime DateSubmitted { get; set; }
+
+        public string Image { get; set; }
+
     }
+
 }

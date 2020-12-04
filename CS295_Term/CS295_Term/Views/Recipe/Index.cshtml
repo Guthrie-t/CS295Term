@@ -1,0 +1,24 @@
+﻿@model List<Recipe> 
+
+@{
+    ViewData["Title"] = "View All Recipes";
+}
+
+<div class="page-content">
+    <h1 class="text-center"> View All Recipes</h1>
+
+    @foreach (Recipe recipe in Model)
+    {
+        <div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 "><img class="recipe float-right" src="@recipe.Image" /></div>
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                    <h5>@recipe.RecipeName</h5>
+
+                </div>
+            </div>
+        </div>
+
+        <br />
+    }
+</div>
