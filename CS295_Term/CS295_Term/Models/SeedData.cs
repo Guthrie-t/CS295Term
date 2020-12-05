@@ -10,7 +10,6 @@ namespace CS295_Term.Models
     {
         public static void Seed(RecipeContext context)
         {
-
             var recipes = new List<Recipe>
             {
                 new Recipe

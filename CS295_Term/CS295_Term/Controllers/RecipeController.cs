@@ -22,14 +22,43 @@ namespace CS295_Term.Controllers
             return View(recipes);
         }
 
-        public IActionResult SingleRecipe()
+        [HttpGet]
+        public IActionResult SingleRecipe(int id)
         {
-            return View();
+            var recipe = context.Recipe.Find(id);
+            return View(recipe);
         }
 
-        public IActionResult EditRecipe()
+        public IActionResult AddRecipe()
         {
-            return View();
+            ViewBag.Action = "Add";
+            return View("EditRecipe", new Recipe());
         }
+        
+        public IActionResult EditRecipe(int id)
+        {
+            var recipe = context.Recipe.Find(id);
+            return View(recipe);
+        }
+        [HttpPost]
+        public IActionResult EditRecipe(Recipe recipe)
+        {
+            if (ModelState.IsValid)
+            {
+                if (recipe.RecipeId == 0)
+                {
+                    recipe.DateSubmitted = DateTime.Now;
+                    context.Recipe.Add(recipe);
+                }
+                else
+                    context.Recipe.Update(recipe);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Recipe");
+            }
+            else
+                ViewBag.Action = (recipe.RecipeId == 0) ? "Add" : "Edit";
+                return View(recipe);
+        }
+
     }
 }
