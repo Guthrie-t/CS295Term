@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
+using CS295_Term.Repositories;
 
 namespace CS295_Term
 {
@@ -26,8 +27,10 @@ namespace CS295_Term
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IRecipeRepository, RecipeRepository>();
+
             services.AddDbContext<RecipeContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("RecipeContext")));
+                options.UseSqlServer(Configuration["Data:CS295Nterm:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +59,7 @@ namespace CS295_Term
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            SeedData.Seed(context);
+           //SeedData.Seed(context);
         }
     }
 }

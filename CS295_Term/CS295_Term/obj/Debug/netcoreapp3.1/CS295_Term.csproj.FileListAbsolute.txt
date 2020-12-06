@@ -186,3 +186,7 @@ C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_T
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\Index.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\SingleRecipe.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Recipe\EditRecipe.cshtml.g.cs
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.CS295Term - Web Deploy.json
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\CS295Term - Web Deploy\profile.arm.json
+C:\Users\Tiffy\Desktop\Homework\CS295N\Term Project\CS295Term\CS295_Term\CS295_Term\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json

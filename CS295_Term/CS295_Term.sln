@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS295_Term", "CS295_Term\CS295_Term.csproj", "{DCE84BEA-CADB-4324-9C13-3BBF75F9A017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS295_Term", "CS295_Term\CS295_Term.csproj", "{DCE84BEA-CADB-4324-9C13-3BBF75F9A017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTests", "RecipeTests\RecipeTests.csproj", "{B85AA923-B444-46E4-815F-C0976EB39012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DCE84BEA-CADB-4324-9C13-3BBF75F9A017}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE84BEA-CADB-4324-9C13-3BBF75F9A017}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE84BEA-CADB-4324-9C13-3BBF75F9A017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B85AA923-B444-46E4-815F-C0976EB39012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B85AA923-B444-46E4-815F-C0976EB39012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B85AA923-B444-46E4-815F-C0976EB39012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B85AA923-B444-46E4-815F-C0976EB39012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

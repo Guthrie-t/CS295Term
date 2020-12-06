@@ -1,4 +1,4 @@
-﻿@model List<Recipe> 
+﻿@model List<Recipe>
 
 @{
     ViewData["Title"] = "View All Recipes";
@@ -10,9 +10,22 @@
         <a asp-controller="Recipe" asp-action="AddRecipe" type="button"
            class="btn btn-lg btn-secondary float-right">Add a Recipe</a>
     </div>
+    <form method="post" class="justify-content-center">
+        <div class="row">
+            <label for="recipeName" class="control-label col-3">Search by Recipe Name:</label>
+        </div>
+        <div class="row">
+            <input name="recipeName" class="form-control col-2" />
+            <button type="submit" class="form-control btn btn-sm btn-secondary col-1">Submit</button>
+            <a asp-action="Index" class="form-control btn btn-sm btn-secondary col-1">Reset</a>
+        </div>
+    </form>
+    <div class="row"><br /></div>
 
-    @foreach (Recipe recipe in Model)
+    @if (Model != null)
     {
+        foreach (Recipe recipe in Model)
+        {
         <div>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 "><a asp-controller="Recipe" asp-action="SingleRecipe" asp-route-id="@recipe.RecipeId"><img class="recipe float-right" src="@recipe.Image" /></a></div>
@@ -22,5 +35,6 @@
             </div>
         </div>
         <br />
+        }
     }
 </div>
