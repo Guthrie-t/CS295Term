@@ -1,7 +1,6 @@
 ﻿@model Recipe
 @{
-    string title = ViewBag.Action + " A Recipe";
-    ViewBag.Title = title;
+    ViewBag.Title = "Your Recipe";
 }
 
 <div class="page-content">
@@ -30,13 +29,15 @@
         </div>
         <input type="hidden" asp-for="RecipeId" />
         <input type="hidden" asp-for="Image" />
+        
     </form>
 </div>
 <div class="row">
     <div class="col-lg-11 page-bottom-content-skinny">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-5">
                 <button type="submit" class="btn btn-secondary" form="form_id">Save</button>
+                <a asp-controller="Recipe" asp-action="Delete" asp-route-id="@Model.RecipeId" form="form_id" class="btn btn-secondary">Delete</a>
                 <a asp-controller="Recipe" asp-action="Index" class="btn btn-secondary">Cancel</a>
             </div>
             <div class="col-sm-9"></div>

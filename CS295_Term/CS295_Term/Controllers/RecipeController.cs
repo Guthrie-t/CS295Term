@@ -69,5 +69,20 @@ namespace CS295_Term.Controllers
                 return View(recipe);
         }
 
+        public IActionResult Delete (int id)
+        {
+            Recipe recipe = repo.Recipes.Where(r => r.RecipeId ==id).ToList()[0];
+            return View(recipe);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Recipe recipe)
+        {
+            if(ModelState.IsValid)
+            {
+                repo.DeleteRecipe(recipe);
+            }
+            return RedirectToAction("Index", "Recipe");
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace CS295_Term.Repositories
         void AddRecipe(Recipe recipe);
 
         void UpdateRecipe(Recipe recipe);
+
+        void DeleteRecipe(Recipe recipe);
     }
 }

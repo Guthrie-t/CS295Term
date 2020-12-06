@@ -33,5 +33,10 @@ namespace CS295_Term.Repositories
             context.Recipe.Update(recipe);
             context.SaveChanges();
         }
+        public void DeleteRecipe(Recipe recipe)
+        {
+            context.Recipe.Remove(recipe);
+            context.SaveChanges();
+        }
     }
 }
