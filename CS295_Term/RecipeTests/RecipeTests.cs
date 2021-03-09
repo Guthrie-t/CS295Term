@@ -12,16 +12,14 @@ namespace RecipeTests
         [Fact]
         public void AddRecipeTest()
         {
+            
             var fakeRepo = new FakeRecipeRepository();
-            var controller = new RecipeController(fakeRepo);
+            var controller = new RecipeController(fakeRepo, null);
             var recipe = new Recipe()
             {
                 RecipeName = "Test",
                 Ingredients = "Test",
-                Instructions = "Test",
-                Rating = 3,
-                Category = "Comfort Food",
-                DateSubmitted = DateTime.Parse("1/1/2019"),
+                Instructions = "Test"
             };
 
             controller.EditRecipe(recipe);
@@ -33,15 +31,12 @@ namespace RecipeTests
         public void EditRecipeTest()
         {
             var fakeRepo = new FakeRecipeRepository();
-            var controller = new RecipeController(fakeRepo);
+            var controller = new RecipeController(fakeRepo, null);
             var recipe = new Recipe()
             {
                 RecipeName = "Test",
                 Ingredients = "Test",
                 Instructions = "Test",
-                Rating = 3,
-                Category = "Comfort Food",
-                DateSubmitted = DateTime.Parse("1/1/2019"),
             };
 
             controller.EditRecipe(recipe);

@@ -57,7 +57,7 @@ namespace CS295_Term.Controllers
             {
                 if (recipe.RecipeId == 0)
                 {
-                    recipe.DateSubmitted = DateTime.Now;
+                    //recipe.DateSubmitted = DateTime.Now;
                     repo.AddRecipe(recipe);
                 }
                 else

@@ -19,7 +19,8 @@ namespace CS295_Term.Repositories
         {
             get
             {
-                return context.Recipe;
+                return context.Recipe.Include(Recipe => Recipe.User)
+                    .Include(Recipe => Recipe.Categories);
             }
         }
         public void AddRecipe(Recipe recipe)
@@ -38,5 +39,12 @@ namespace CS295_Term.Repositories
             context.Recipe.Remove(recipe);
             context.SaveChanges();
         }
+
+        public void AddCategory(Category category)
+        {
+            context.Category.Add(category);
+            context.SaveChanges();
+        }
+
     }
 }

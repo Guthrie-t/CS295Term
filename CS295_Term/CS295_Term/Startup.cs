@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
 using CS295_Term.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 namespace CS295_Term
 {
@@ -26,15 +27,20 @@ namespace CS295_Term
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<SiteUser, IdentityRole>()
+                   .AddEntityFrameworkStores<RecipeContext>()
+                   .AddDefaultTokenProviders();
+
+
             services.AddControllersWithViews();
             services.AddTransient<IRecipeRepository, RecipeRepository>();
 
             services.AddDbContext<RecipeContext>(options =>
-                options.UseSqlServer(Configuration["Data:CS295Nterm:ConnectionString"]));
+                options.UseSqlServer(Configuration["Data:ApronStrings:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RecipeContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecipeRepository repo)
         {
             if (env.IsDevelopment())
             {
@@ -51,7 +57,9 @@ namespace CS295_Term
 
             app.UseRouting();
 
+            app.UseAuthentication(); //use Authentication MUST GOT ABOVE AUTHORIZATION
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
@@ -59,7 +67,12 @@ namespace CS295_Term
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-           //SeedData.Seed(context);
+
+            //var serviceProvider = app.ApplicationServices;
+            //var userManager = serviceProvider.GetRequiredService<UserManager<SiteUser>>();
+            //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            SeedData.Seed(repo);
         }
     }
 }

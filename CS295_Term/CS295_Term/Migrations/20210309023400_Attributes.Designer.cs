@@ -4,20 +4,46 @@ using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CS295_Term.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    partial class RecipeContextModelSnapshot : ModelSnapshot
+    [Migration("20210309023400_Attributes")]
+    partial class Attributes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CS295_Term.Models.Attribute", b =>
+                {
+                    b.Property<int>("AttributeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateSubmitted")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OverallRating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserRating")
+                        .HasColumnType("int");
+
+                    b.HasKey("AttributeID");
+
+                    b.ToTable("Attribute");
+                });
 
             modelBuilder.Entity("CS295_Term.Models.Category", b =>
                 {
@@ -26,15 +52,15 @@ namespace CS295_Term.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AttributeID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
                     b.HasKey("CategoryID");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("AttributeID");
 
                     b.ToTable("Category");
                 });
@@ -46,8 +72,8 @@ namespace CS295_Term.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateSubmitted")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("AttributesAttributeID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -58,22 +84,15 @@ namespace CS295_Term.Migrations
                     b.Property<string>("Instructions")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OverallRating")
-                        .HasColumnType("int");
-
                     b.Property<string>("RecipeName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("UserRating")
-                        .HasColumnType("int");
-
                     b.HasKey("RecipeId");
+
+                    b.HasIndex("AttributesAttributeID");
 
                     b.HasIndex("UserId");
 
@@ -282,13 +301,17 @@ namespace CS295_Term.Migrations
 
             modelBuilder.Entity("CS295_Term.Models.Category", b =>
                 {
-                    b.HasOne("CS295_Term.Models.Recipe", null)
+                    b.HasOne("CS295_Term.Models.Attribute", null)
                         .WithMany("Categories")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("AttributeID");
                 });
 
             modelBuilder.Entity("CS295_Term.Models.Recipe", b =>
                 {
+                    b.HasOne("CS295_Term.Models.Attribute", "Attributes")
+                        .WithMany()
+                        .HasForeignKey("AttributesAttributeID");
+
                     b.HasOne("CS295_Term.Models.SiteUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");

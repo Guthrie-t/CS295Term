@@ -4,14 +4,16 @@ using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CS295_Term.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    partial class RecipeContextModelSnapshot : ModelSnapshot
+    [Migration("20210217021050_AddIdentityTables")]
+    partial class AddIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,32 +21,15 @@ namespace CS295_Term.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CS295_Term.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryID");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("CS295_Term.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateSubmitted")
                         .HasColumnType("datetime2");
@@ -58,26 +43,61 @@ namespace CS295_Term.Migrations
                     b.Property<string>("Instructions")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OverallRating")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("RecipeName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("UserRating")
-                        .HasColumnType("int");
-
                     b.HasKey("RecipeId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Recipe");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipeId = 1,
+                            Category = "Comfort Food",
+                            DateSubmitted = new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "/css/images/macncheese.jpg",
+                            Ingredients = "5 cups milk, 1 lb elbow macaroni dry, 2 cups shredded cheddar cheese",
+                            Instructions = "In a large pot, bring the milk to a boil. Add the pasta and stir constantly until the pasta is cooked, about 10 minutes. Turn off the heat, then add the cheddar. Stir until the cheese is melted and the pasta is evenly coated. Enjoy!",
+                            Rating = 5,
+                            RecipeName = "Macaroni and Cheese"
+                        },
+                        new
+                        {
+                            RecipeId = 2,
+                            Category = "Dessert",
+                            DateSubmitted = new DateTime(2020, 5, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "/css/images/pbcookies.jpg",
+                            Ingredients = "200g peanut butter (crunchy or smooth is fine), 175g golden caster sugar, ¼ tsp fine table salt, 1 large egg",
+                            Instructions = "Heat oven to 180C/160C and line 2 large baking trays with baking parchment. Measure the peanut butter and sugar into a bowl. Add ¼ tsp fine table salt and mix well with a wooden spoon. Add the egg and mix again until the mixture forms a dough. Break off cherry tomato sized chunks of dough and place, well spaced apart, on the trays. Press the cookies down with the back of a fork to squash them a little. The cookies can now be frozen for 2 months, cook from frozen adding an extra min or 2 to the cooking time. Bake for 12 mins, until golden around the edges and paler in the centre. Cool on the trays for 10 mins, then transfer to a wire rack and cool completely. Store in a cookie jar for up to 3 days. ",
+                            Rating = 4,
+                            RecipeName = "Peanut Butter Cookies"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            Category = "Classics From Scratch",
+                            DateSubmitted = new DateTime(2016, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "/css/images/pasta.jpg",
+                            Ingredients = "300g ‘00’ pasta flour (plus extra for dusting), 2 eggs and 4 yolks (lightly beaten), semolina flour (for dusting)",
+                            Instructions = "Put the flour in a food processor with ¾ of your egg mixture and a pinch of salt. Blitz to large crumbs – they should come together to form a dough when squeezed (if it feels a little dry gradually add a bit more egg). Tip the dough onto a lightly floured surface, knead for 1 min or until nice and smooth – don’t worry if it’s quite firm as it will soften when it rests. Cover with cling film and leave to rest for 30 mins. Cut away ¼ of the dough (keep the rest covered with cling film) and feed it through the widest setting on your pasta machine. (If you don’t have a machine, use a heavy rolling pin to roll the dough as thinly as possible.) Then fold into three, give the dough a quarter turn and feed through the pasta machine again. Repeat this process once more then continue to pass the dough through the machine, progressively narrowing the rollers, one notch at a time, until you have a smooth sheet of pasta. On the narrowest setting, feed the sheet through twice. Cut as required to use for filled pastas like tortellini, or cut into lengths to make spaghetti, linguine, tagliatelle, or pappardelle. Then, dust in semolina flour and set aside, or hang until dry (an hour will be enough time.) Store in a sealed container in the fridge and use within a couple of days, or freeze for 1 month.",
+                            Rating = 3,
+                            RecipeName = "Fresh Pasta"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            Category = "Drinks",
+                            DateSubmitted = new DateTime(2020, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "/css/images/earlgreymartini.jpg",
+                            Ingredients = "1 tbsp good loose-leaf Earl Grey tea, 700ml bottle of decent gin, ice",
+                            Instructions = "Put the Earl Grey tea in a large jug. Pour the gin over and stir with a long-handled spoon for about 45 secs. Strain the gin through a tea strainer over a funnel back into the bottle. You’ll see small particles of leaf still suspended in the gin. Rinse out the jug and, using a coffee filter or some muslin inside the funnel, strain the gin a second time to remove all the particles. In this way, the gin will be stable and the flavour won’t change – it’ll be good for months and months until the final sip. To serve, shake or stir over ice – I like how the flavours change as the drink dilutes.",
+                            Rating = 5,
+                            RecipeName = "Earl Grey Martini"
+                        });
                 });
 
             modelBuilder.Entity("CS295_Term.Models.SiteUser", b =>
@@ -278,20 +298,6 @@ namespace CS295_Term.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CS295_Term.Models.Category", b =>
-                {
-                    b.HasOne("CS295_Term.Models.Recipe", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("RecipeId");
-                });
-
-            modelBuilder.Entity("CS295_Term.Models.Recipe", b =>
-                {
-                    b.HasOne("CS295_Term.Models.SiteUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
