@@ -357,3 +357,4 @@ C:\Users\Tiffy\Desktop\Homework\CS296N\Term Project\CS295Term\CS295_Term\CS295_T
 C:\Users\Tiffy\Desktop\Homework\CS296N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS296N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Tiffy\Desktop\Homework\CS296N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Tiffy\Desktop\Homework\CS296N\Term Project\CS295Term\CS295_Term\CS295_Term\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs

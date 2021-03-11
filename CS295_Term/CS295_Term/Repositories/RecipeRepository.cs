@@ -20,7 +20,7 @@ namespace CS295_Term.Repositories
             get
             {
                 return context.Recipe.Include(Recipe => Recipe.User)
-                    .Include(Recipe => Recipe.Categories);
+                    .Include(Recipe => Recipe.Category);
             }
         }
         public void AddRecipe(Recipe recipe)

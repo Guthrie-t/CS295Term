@@ -14,7 +14,7 @@ namespace RecipeTests
         {
             
             var fakeRepo = new FakeRecipeRepository();
-            var controller = new RecipeController(fakeRepo, null);
+            var controller = new RecipeController(fakeRepo, null, null);
             var recipe = new Recipe()
             {
                 RecipeName = "Test",
@@ -31,7 +31,7 @@ namespace RecipeTests
         public void EditRecipeTest()
         {
             var fakeRepo = new FakeRecipeRepository();
-            var controller = new RecipeController(fakeRepo, null);
+            var controller = new RecipeController(fakeRepo, null, null);
             var recipe = new Recipe()
             {
                 RecipeName = "Test",

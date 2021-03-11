@@ -4,14 +4,16 @@ using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CS295_Term.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    partial class RecipeContextModelSnapshot : ModelSnapshot
+    [Migration("20210311033103_UpdateUser")]
+    partial class UpdateUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +31,12 @@ namespace CS295_Term.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RecipeId")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoryID");
+
+                    b.HasIndex("RecipeId");
 
                     b.ToTable("Category");
                 });
@@ -40,9 +47,6 @@ namespace CS295_Term.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoryID")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateSubmitted")
                         .HasColumnType("datetime2");
@@ -65,6 +69,9 @@ namespace CS295_Term.Migrations
                     b.Property<string>("RecipeName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UpdatedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -73,7 +80,7 @@ namespace CS295_Term.Migrations
 
                     b.HasKey("RecipeId");
 
-                    b.HasIndex("CategoryID");
+                    b.HasIndex("UpdatedById");
 
                     b.HasIndex("UserId");
 
@@ -280,11 +287,18 @@ namespace CS295_Term.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CS295_Term.Models.Category", b =>
+                {
+                    b.HasOne("CS295_Term.Models.Recipe", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("RecipeId");
+                });
+
             modelBuilder.Entity("CS295_Term.Models.Recipe", b =>
                 {
-                    b.HasOne("CS295_Term.Models.Category", "Category")
+                    b.HasOne("CS295_Term.Models.SiteUser", "UpdatedBy")
                         .WithMany()
-                        .HasForeignKey("CategoryID");
+                        .HasForeignKey("UpdatedById");
 
                     b.HasOne("CS295_Term.Models.SiteUser", "User")
                         .WithMany()

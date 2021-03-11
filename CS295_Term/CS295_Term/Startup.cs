@@ -57,7 +57,7 @@ namespace CS295_Term
 
             app.UseRouting();
 
-            app.UseAuthentication(); //use Authentication MUST GOT ABOVE AUTHORIZATION
+            app.UseAuthentication(); //use Authentication MUST GO ABOVE AUTHORIZATION
             app.UseAuthorization();
             
 
@@ -71,8 +71,11 @@ namespace CS295_Term
             //var serviceProvider = app.ApplicationServices;
             //var userManager = serviceProvider.GetRequiredService<UserManager<SiteUser>>();
             //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var serviceProvider = app.ApplicationServices;
+            var userManager = serviceProvider.GetRequiredService<UserManager<SiteUser>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            SeedData.Seed(repo);
+            SeedData.Seed(repo, userManager, roleManager);
         }
     }
 }

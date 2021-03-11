@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CS295_Term.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CS295_Term.Models
 {
     public class SeedData
     {
-        public static void Seed(IRecipeRepository repo)
+        public static void Seed(IRecipeRepository repo, UserManager<SiteUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             List<Recipe> recipes = repo.Recipes.ToList();
 
@@ -19,18 +20,6 @@ namespace CS295_Term.Models
                 Name = "Comfort Food"
             };
             repo.AddCategory(comfortFood);
-
-            Category pasta = new Category
-            {
-                Name = "Pasta"
-            };
-            repo.AddCategory(pasta);
-
-            Category glutenFree = new Category
-            {
-                Name = "Gluten-Free"
-            };
-            repo.AddCategory(glutenFree);
 
             Category dessert = new Category
             {
@@ -50,6 +39,20 @@ namespace CS295_Term.Models
             };
             repo.AddCategory(drinks);
 
+            var result = roleManager.CreateAsync(new IdentityRole("Member")).Result;
+            result = roleManager.CreateAsync(new IdentityRole("Admin")).Result;
+
+            // Seeding a default administrator. They will need to change their password after logging in.
+            SiteUser siteadmin = new SiteUser
+            {
+                UserName = "SiteAdmin",
+            };
+            userManager.CreateAsync(siteadmin, "Secret-123").Wait();
+            IdentityRole adminRole = roleManager.FindByNameAsync("Admin").Result;
+            userManager.AddToRoleAsync(siteadmin, adminRole.Name);
+
+
+
 
 
             //begin actual recipes
@@ -67,12 +70,10 @@ namespace CS295_Term.Models
                      UserRating = 3,
                      DateSubmitted = DateTime.Parse("1/1/2019"),
                      LastUpdated = DateTime.Parse("2/14/2020"),
-                     Categories = new List<Category>
-                     {
-                         pasta, 
-                         comfortFood
-                     },
-                    Image = "/css/images/macncheese.jpg"
+                     Category = comfortFood,
+                    Image = "/css/images/macncheese.jpg",
+                    User = new SiteUser() { UserName = "BigBertha12", Nickname = "Bertha"}
+                   
                 };
 
                 repo.AddRecipe(recipe);
@@ -93,13 +94,9 @@ namespace CS295_Term.Models
                     UserRating = 5,
                     DateSubmitted = DateTime.Parse("7/18/2019"),
                     LastUpdated = DateTime.Parse("5/13/2020"),
-                    Categories = new List<Category>
-                    {
-                        dessert, 
-                        glutenFree
-                         
-                    },
-                    Image = "/css/images/pbcookies.jpg"
+                    Category = dessert,
+                    Image = "/css/images/pbcookies.jpg",
+                    User = new SiteUser() { UserName = "Riliye", Nickname = "Tiff" }
                 };
                 repo.AddRecipe(recipe);
 
@@ -121,12 +118,9 @@ namespace CS295_Term.Models
                      UserRating = 4,
                      DateSubmitted = DateTime.Parse("3/25/2016"),
                      LastUpdated = DateTime.Parse("12/13/2020"),
-                     Categories = new List<Category>
-                     {
-                         pasta, 
-                         fromScratch
-                     },
-                    Image = "/css/images/pasta.jpg"
+                     Category = fromScratch,
+                    Image = "/css/images/pasta.jpg",
+                    User = new SiteUser() { UserName = "Richard12", Nickname = "DudeBro" }
                 };
                 repo.AddRecipe(recipe);
 
@@ -140,16 +134,86 @@ namespace CS295_Term.Models
                     "In this way, the gin will be stable and the flavour won’t change – it’ll be good for months and months until the final sip. To serve, " +
                     "shake or stir over ice – I like how the flavours change as the drink dilutes.",
 
-                     OverallRating = 3,
-                     UserRating = 5,
-                     DateSubmitted = DateTime.Parse("12/1/2020"),
-                     LastUpdated = DateTime.Parse("12/1/2020"),
-                     Categories = new List<Category>
-                     {
-                         drinks, 
-                         glutenFree
-                     },
-                    Image = "/css/images/earlgreymartini.jpg"
+                    OverallRating = 3,
+                    UserRating = 5,
+                    DateSubmitted = DateTime.Parse("12/1/2020"),
+                    LastUpdated = DateTime.Parse("12/1/2020"),
+                    Category = drinks,
+                    Image = "/css/images/earlgreymartini.jpg",
+                    User = new SiteUser() { UserName = "Charleston", Nickname = "Charlie" }
+                };
+                repo.AddRecipe(recipe);
+
+                recipe = new Recipe
+                {
+                    RecipeName = "Homemade Chili",
+                    Ingredients = "1.5lbs lean ground beef, 1 onion(chopped), 1 small green bell pepper(chopped), 2 garlic cloves (minced), 2 (16oz) cans red kidney beans" +
+                    "(rinsed and drained), 2(14.5oz) cans diced tomatoes, 2-3 tbsp chili powder, 1 tsp salt, 1 tsp pepper, 1 tsp ground cumin",
+                    Instructions = "Cook first 4 ingredients in a large skillet over medium-high heat, stirring until beef crumbles and is no longer pink; drain. " +
+                    "Place mixture in 5-quart slow cooker; stir in beans and remaining ingredients. Cook at HIGH 3 to 4 hours or at LOW 5 to 6 hours. Note: If you " +
+                    "want to thicken this saucy chili, stir in finely crushed saltine crackers until the desired thickness is achieved.",
+
+                    OverallRating = 5,
+                    UserRating = 5,
+                    DateSubmitted = DateTime.Parse("3/9/2020"),
+                    LastUpdated = DateTime.Parse("3/9/2020"),
+                    Category = comfortFood,
+                    Image = "/css/images/chili.jpg",
+                    User = new SiteUser() { UserName = "HiddlestoneHobbit", Nickname = "Bilbo" }
+                };
+                repo.AddRecipe(recipe);
+
+                recipe = new Recipe
+                {
+                    RecipeName = "Lemon Blueberry Layered Dessert",
+                    Ingredients = "15 lemon cookies (coarsely crushed), 1(21oz) can blueberry pie filling, 1(8oz, thawed) container frozen whippped topping, 1 (14oz) can sweetened" +
+                    "condensed milk, 1 (6oz, thawed) can frozen lemonade concentrate",
+                    Instructions = "Sprinkle 1 tablespoon crushed cookies into each of 8 (8-ounce) parfait glasses. Spoon 1 1/2 tablespoons pie filling over cookies in each glass." +
+                    "Spoon whipped topping into a bowl; fold in condensed milk and lemonade concentrate. Spoon 2 tablespoons whipped topping mixture over pie filling in each glass. " +
+                    "Repeat layers once. Top evenly with remaining crushed cookies. Cover and chill 4 hours.",
+
+                    OverallRating = 4,
+                    UserRating = 2,
+                    DateSubmitted = DateTime.Parse("3/9/2020"),
+                    LastUpdated = DateTime.Parse("3/9/2020"),
+                    Category = dessert,
+                    Image = "/css/images/lemonblueberry.jpg",
+                    User = new SiteUser() { UserName = "MasterChief", Nickname = "MC" }
+                };
+                repo.AddRecipe(recipe);
+
+                recipe = new Recipe
+                {
+                    RecipeName = "From Scratch Oven Fries",
+                    Ingredients = "1.5lbs medium sized baking potatoes (peeled and cut into 0.5in thick strips), 1tbsp vegetable oil, 1/2 tsp kosher salt",
+                    Instructions = "Preheat oven to 450°. Rinse potatoes in cold water. Drain and pat dry. Toss together potatoes, oil, and salt in a large bowl." +
+                    "Place a lightly greased wire rack in a jelly-roll pan. Arrange potatoes in a single layer on wire rack." +
+                    "Bake at 450° for 40 to 45 minutes or until browned. Serve immediately with ketchup, if desired.",
+
+                    OverallRating = 3,
+                    UserRating = 5,
+                    DateSubmitted = DateTime.Parse("3/9/2020"),
+                    LastUpdated = DateTime.Parse("3/9/2020"),
+                    Category = fromScratch,
+                    Image = "/css/images/fries.jpg",
+                    User = new SiteUser() { UserName = "Huckleberry", Nickname = "Huckleberry" }
+                };
+                repo.AddRecipe(recipe);
+
+                recipe = new Recipe
+                {
+                    RecipeName = "Whiskey Sour",
+                    Ingredients = "2 ounces bourbon whiskey, 1 ounce lemon juice, 1 1/2 tbsps maple syrup (or simple syrup), garnish of orange peel and cocktail cherry, ice for serving",
+                    Instructions = "Add the bourbon whiskey, lemon juice, and syrup to a cocktail shaker. Fill with a handful of ice and shake until very cold." +
+                    "Strain the drink into a lowball or Old Fashioned glass. Serve with ice, an orange peel and a cocktail cherry. ",
+
+                    OverallRating = 5,
+                    UserRating = 5,
+                    DateSubmitted = DateTime.Parse("3/9/2020"),
+                    LastUpdated = DateTime.Parse("3/9/2020"),
+                    Category = drinks,
+                    Image = "/css/images/whiskeysour.jpg",
+                    User = new SiteUser() { UserName = "CheepCheep", Nickname = "Chicken" }
                 };
                 repo.AddRecipe(recipe);
 
