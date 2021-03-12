@@ -95,5 +95,33 @@ namespace CS295_Term.Controllers
             }
             return RedirectToAction("Index", "Recipe");
         }
+
+        [Authorize]
+        public IActionResult Comment(int recipeId)
+        {
+            var commentVM = new CommentViewModel { RecId = recipeId };
+            return View(commentVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Comment(CommentViewModel model)
+        {
+            var comment = new Comment { CommentText = model.CommentText };
+            comment.CommentUser = await userManager.GetUserAsync(User);
+
+            var recipe = (from r in repo.Recipes
+                             where r.RecipeId == model.RecId
+                             select r).First<Recipe>();
+
+            if (ModelState.IsValid)
+            {
+                recipe.Comments.Add(comment);
+                repo.UpdateRecipe(recipe);
+                return Redirect("SingleRecipe/"+ model.RecId);
+            }
+            return View();
+        }
+
+
     }
 }

@@ -15,6 +15,8 @@ namespace CS295_Term.Models
         public DbSet<Recipe> Recipe { get; set; }
 
         public DbSet<Category> Category { get; set; }
+        
+        public DbSet<Comment> Comment { get; set; }
 
         /*protected override void OnModelCreating(ModelBuilder modelbuilder)
         {

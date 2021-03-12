@@ -8,6 +8,7 @@ namespace CS295_Term.Models
 {
     public class Recipe
     {
+        private List<Comment> comments = new List<Comment>();
 
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
@@ -27,6 +28,14 @@ namespace CS295_Term.Models
         public string Image { get; set; }
 
         public SiteUser User { get; set; }
+
+        public List<Comment> Comments
+        {
+            get
+            {
+                return comments;
+            }
+        }
 
     }
 

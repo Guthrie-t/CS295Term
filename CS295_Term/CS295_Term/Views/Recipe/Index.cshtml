@@ -31,6 +31,9 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 "><a asp-controller="Recipe" asp-action="SingleRecipe" asp-route-id="@recipe.RecipeId"><img class="recipe float-right" src="@recipe.Image" /></a></div>
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <a asp-controller="Recipe" asp-action="SingleRecipe" asp-route-id="@recipe.RecipeId"><h5>@recipe.RecipeName</h5></a>
+                    Rating: @recipe.OverallRating
+                    <br />
+                    @recipe.Comments.Count Comments 
                 </div>
             </div>
         </div>
