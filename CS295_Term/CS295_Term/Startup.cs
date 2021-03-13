@@ -52,6 +52,12 @@ namespace CS295_Term
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                await next();
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -68,9 +74,6 @@ namespace CS295_Term
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //var serviceProvider = app.ApplicationServices;
-            //var userManager = serviceProvider.GetRequiredService<UserManager<SiteUser>>();
-            //var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var serviceProvider = app.ApplicationServices;
             var userManager = serviceProvider.GetRequiredService<UserManager<SiteUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
