@@ -1,0 +1,20 @@
+﻿@model CommentViewModel
+
+@{
+    ViewData["Title"] = "Comment";
+}
+
+<div class="text-center container border rounded-circle m-1 p-1">
+    <h1 class="display-4">Comment on a Recipe</h1>
+</div>
+<form method="post" class="page-content container">
+    <div asp-validation-summary="All"></div>
+    <div class="row col-sm-6">
+        <label asp-for="CommentText">Your Reply: </label>
+    </div>
+    <div class="row col-sm-6">
+        <textarea asp-for="CommentText"></textarea>
+    </div><br />
+
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>

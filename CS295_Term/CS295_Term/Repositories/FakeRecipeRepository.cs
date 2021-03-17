@@ -15,6 +15,11 @@ namespace CS295_Term.Repositories
             get { return recipes.AsQueryable<Recipe>(); }
         }
 
+        public void AddCategory(Category category)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddRecipe(Recipe recipe)
         {
             recipe.RecipeId = recipes.Count;

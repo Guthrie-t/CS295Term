@@ -6,18 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using CS295_Term.Models;
 using Microsoft.EntityFrameworkCore;
 using CS295_Term.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CS295_Term.Controllers
 {
     public class RecipeController : Controller
     {
         IRecipeRepository repo;
+        UserManager<SiteUser> userManager;
         private RecipeContext context { get; set; }
 
-        public RecipeController(IRecipeRepository r, RecipeContext ctx)
+        public RecipeController(IRecipeRepository r, RecipeContext ctx, UserManager<SiteUser> u)
         {
             repo = r;
             context = ctx;
+            userManager = u;
         }
         public IActionResult Index()
         {
@@ -39,42 +43,49 @@ namespace CS295_Term.Controllers
             return View(recipe);
         }
 
+        [Authorize]
         public IActionResult AddRecipe()
         {
             ViewBag.Action = "Add";
             return View("EditRecipe", new Recipe());
         }
-
+        [Authorize]
         public IActionResult EditRecipe(int id)
         {
             Recipe recipe = repo.Recipes.Where(r => r.RecipeId == id).ToList()[0];
             return View(recipe);
         }
+        [Authorize]
         [HttpPost]
         public IActionResult EditRecipe(Recipe recipe)
         {
+            
             if (ModelState.IsValid)
             {
                 if (recipe.RecipeId == 0)
                 {
-                    recipe.DateSubmitted = DateTime.Now;
                     repo.AddRecipe(recipe);
                 }
                 else
+                {
+                    recipe.OverallRating = recipe.UserRating;
+                    recipe.LastUpdated = DateTime.Now;
                     repo.UpdateRecipe(recipe);
+                }
                 return RedirectToAction("Index", "Recipe");
             }
             else
                 ViewBag.Action = (recipe.RecipeId == 0) ? "Add" : "Edit";
                 return View(recipe);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete (int id)
         {
             Recipe recipe = repo.Recipes.Where(r => r.RecipeId ==id).ToList()[0];
             return View(recipe);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Delete(Recipe recipe)
         {
@@ -84,5 +95,33 @@ namespace CS295_Term.Controllers
             }
             return RedirectToAction("Index", "Recipe");
         }
+
+        [Authorize]
+        public IActionResult Comment(int recipeId)
+        {
+            var commentVM = new CommentViewModel { RecId = recipeId };
+            return View(commentVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Comment(CommentViewModel model)
+        {
+            var comment = new Comment { CommentText = model.CommentText };
+            comment.CommentUser = await userManager.GetUserAsync(User);
+
+            var recipe = (from r in repo.Recipes
+                             where r.RecipeId == model.RecId
+                             select r).First<Recipe>();
+
+            if (ModelState.IsValid)
+            {
+                recipe.Comments.Add(comment);
+                repo.UpdateRecipe(recipe);
+                return Redirect("SingleRecipe/"+ model.RecId);
+            }
+            return View();
+        }
+
+
     }
 }

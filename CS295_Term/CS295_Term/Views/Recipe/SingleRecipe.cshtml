@@ -6,15 +6,52 @@
 
 <div class="page-content">
     <div class="row">
-        <h1 class="col-lg-11 col-mg-11 col-sm-11">@Model.RecipeName</h1>
-        <a asp-controller="Recipe" asp-action="EditRecipe" asp-route-id="@Model.RecipeId" type="button" 
+        <h1 class="col-lg-8 col-mg-8 col-sm-8">@Model.RecipeName</h1>
+        <a asp-controller="Recipe" asp-action="Index" type="button"
+           class="btn btn-lg btn-secondary float-right">Back</a>
+        <a asp-controller="Recipe" asp-action="EditRecipe" asp-route-id="@Model.RecipeId" type="button"
            class="btn btn-lg btn-secondary float-right">Edit</a>
+        <a asp-controller="Recipe" asp-action="Comment" asp-route-RecId="@Model.RecipeId" type="button"
+           class="btn btn-lg btn-secondary float-right">Comment</a>
+
     </div>
-    
-    <img class="recipe" src ="@Model.Image" />
-    <p><h6>Category:</h6> @Model.Category</p>
+
+    <img class="recipe" src="@Model.Image" />
+    <p><h6>Overall Rating: </h6>@Model.OverallRating</p>
+    <p><h6>User's Rating: </h6> @Model.UserRating</p>
+    <p><h6>Submitted By: </h6> @Model.User</p>
+    <p><h6>Date Submitted: </h6> @Model.DateSubmitted</p>
+    @if (Model.LastUpdated != Model.DateSubmitted)
+    {
+        <p><h6>Last Updated: </h6> @Model.LastUpdated</p>
+    }
+
+    <p><h6>Category:</h6></p>
+    <ul>@Model.Category.Name </ul>
+
+
+
     <p><h6>Ingredients:</h6> @Model.Ingredients</p>
     <p><h6>Instructions:</h6>@Model.Instructions</p>
+    <br />
+    <br />
+
+    @if (Model.Comments.Count != 0)
+    {
+        <h3>Comments</h3>
+
+        @foreach (Comment comment in Model.Comments)
+        {
+            <p>
+                <strong class="m-3">Comment:</strong>
+                @comment.CommentText<br />
+                <strong class="m-3">By:</strong>
+                @comment.CommentUser.UserName<br />
+            </p>
+        }
+    }
+
+
 
 </div>
 
